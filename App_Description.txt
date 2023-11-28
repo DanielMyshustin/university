@@ -1,0 +1,20 @@
+## Teacher can view his own schedule:
+
+If user is logged on by Teacher id(loggin)
+
+- User can see and navigate to "My Schedule" menu interface.
+- User should have a possibility to see his own Teacher schedule according with selected date/range filter.
+
+## Student can view his own schedule:
+
+If user is logged on by Student id(loggin)
+
+- User can see and navigate to "My Schedule" menu interface.
+- User should have a possibility to see his own Student schedule according with selected date/range filter.
+
+## Manager can change schedule for Students and Teachers:
+
+If user is logged on by Manager id(loggin)
+
+- User can manage all schedule for all Students and Teachers.
+- User can delete or add schedule.
