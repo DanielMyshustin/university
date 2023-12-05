@@ -1,47 +1,37 @@
 
 ## Desription of Entityes:
 
+# User
+
+User is one of central part of University application. Users will login into application and do some actions, like observe schedule or update some information for other users. There are next roles of users: admin (ROLE_ADMIN), student(ROLE_STUDENT), teacher(ROLE_TEACHER). Every user can be described with next fields: firstname, lastname, password(digits and letters), login (e-mail), role.
+
+A little more about roles; each user, depending on their role, will have their own specific range of capabilities:
+
+- A student(ROLE_STUDENT) can view information regarding the schedule of subjects for his specific group, one day or even a month in advance.
+- The teacher(ROLE_TEACHER) may have the opportunity, like the student, to view information regarding his own schedule, as well as cancel his own lesson (if there is a reason for this).
+- The admin(ROLE_ADMIN), in turn, can view the schedule of both students and teachers, make changes to their schedules, add or cancel classes, add or remove students and teachers, as well as edit their first and last names.
+
 # Student
 
-The student extends the User entity and has a bidirectional relationship with the group entity.  A student can exist on his own, outside the group.  From this comes the attitude towards the group, either 0 or 1 (the student may or may not have a group).
+The difference between the student himself and the others is that the student belongs to a group, Entity Group. The teacher and admin are not associated with the group. A student, in turn, can belong to (be in) only one group or not have a group at all.
 
-# Group 
+# Group
 
-A group itself consists of a list of students, therefore it relates to one to many students (one group can have one or more students), however, a group without students can also exist, and also partially aggregates the essence of the schedule, in a one-to-one relationship.
+The group is the one of main units of the schedule, since it is the group that will receive the schedule and all the students in it. In turn, the group will have its own attributes (fields): groupName(digits and letters) and students(list of students in it). The group may have no students at all, or it may have more students.
 
-# Teacher 
+#Teacher
 
-The teacher, like the student, expands the User class.  And it has a bidirectional relationship with the Course entity, both entities cannot exist one without the other, which determines the one-to-one relationship (one teacher has one course).
+The teacher differs from the rest in that he is connected with his course, the essence of the Course. It also has its own audience described by the room attribute (field).  Each teacher has one of his own courses (subjects).
 
-# Course 
+# Course
 
-The course is connected with one teacher, and also partially aggregates the essence of the schedule, in a one-to-one relationship.
+The course is also an important component of the schedule. A course has a courseName( Name of course: Music, History ... other) field and identifies the subject that will be taught to a group of students. Each course has one teacher who teaches it.
 
-# Time
+# Time 
 
-The Time entity is a class with a list of time periods, which in turn aggregates the Schedule class, with a one-to-one relationship.
+TimeSchedule, this is the part that is responsible for coordinating the time intervals during which classes will take place, breaks between classes, and will also generally help to navigate the time frame of the schedule.  It has a field (attribute) timePeriod, which denotes time intervals.
 
 # Schedule
 
-A schedule is an entity compiled and aggregated data from other entities listed above and has a one-to-one relationship with all of them.  It contains all the necessary data to be presented in the form of a full schedule for the user interface.
+The Schedule, the main part and the overall idea of the project, is a collection of basic data from other classes, which in the general concept form the actual schedule for users. A Schedule is associated with the above mentioned entities, Course, Group and TimeSchedule, one schedule (one instance) can be associated with only one instance of each of these classes, and the data from these aggregate classes form the Schedule. The schedule entity itself has its own scheduleDate field (indicates the current date for one day or a month in advance).
 
-## Teacher can view his own schedule:
-
-If user is logged on by Teacher id(loggin)
-
-- User can see and navigate to "My Schedule" menu interface.
-- User should have a possibility to see his own Teacher schedule according with selected date/range filter.
-
-## Student can view his own schedule:
-
-If user is logged on by Student id(loggin)
-
-- User can see and navigate to "My Schedule" menu interface.
-- User should have a possibility to see his own Student schedule according with selected date/range filter.
-
-## Admin can change schedule for Students and Teachers:
-
-If user is logged on by Admin id(loggin)
-
-- User can manage all schedule for all Students and Teachers.
-- User can delete or add schedule.
