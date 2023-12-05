@@ -1,3 +1,30 @@
+
+## Desription of Entityes:
+
+# Student
+
+The student extends the User entity and has a bidirectional relationship with the group entity.  A student can exist on his own, outside the group.  From this comes the attitude towards the group, either 0 or 1 (the student may or may not have a group).
+
+# Group 
+
+A group itself consists of a list of students, therefore it relates to one to many students (one group can have one or more students), however, a group without students can also exist, and also partially aggregates the essence of the schedule, in a one-to-one relationship.
+
+# Teacher 
+
+The teacher, like the student, expands the User class.  And it has a bidirectional relationship with the Course entity, both entities cannot exist one without the other, which determines the one-to-one relationship (one teacher has one course).
+
+# Course 
+
+The course is connected with one teacher, and also partially aggregates the essence of the schedule, in a one-to-one relationship.
+
+# Time
+
+The Time entity is a class with a list of time periods, which in turn aggregates the Schedule class, with a one-to-one relationship.
+
+# Schedule
+
+A schedule is an entity compiled and aggregated data from other entities listed above and has a one-to-one relationship with all of them.  It contains all the necessary data to be presented in the form of a full schedule for the user interface.
+
 ## Teacher can view his own schedule:
 
 If user is logged on by Teacher id(loggin)
@@ -12,9 +39,9 @@ If user is logged on by Student id(loggin)
 - User can see and navigate to "My Schedule" menu interface.
 - User should have a possibility to see his own Student schedule according with selected date/range filter.
 
-## Manager can change schedule for Students and Teachers:
+## Admin can change schedule for Students and Teachers:
 
-If user is logged on by Manager id(loggin)
+If user is logged on by Admin id(loggin)
 
 - User can manage all schedule for all Students and Teachers.
 - User can delete or add schedule.
