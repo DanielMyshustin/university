@@ -12,6 +12,7 @@ public class Group {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer groupId;
 
+	@Column(length = 255)
 	private String groupName;
 
 	@OneToMany(mappedBy = "group")

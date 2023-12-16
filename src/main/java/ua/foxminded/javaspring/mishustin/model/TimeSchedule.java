@@ -10,6 +10,7 @@ public class TimeSchedule {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer timeScheduleId;
 
+	@Column(length = 255)
 	private String timePeriod;
 
     public TimeSchedule() {

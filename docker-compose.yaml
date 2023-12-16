@@ -10,7 +10,7 @@ services:
 
   university-app:
     build: .
-    container_name: universityschedule-app
+    container_name: university-schedule-app
     ports:
      - "8080:8080"
     depends_on:

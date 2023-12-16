@@ -10,10 +10,19 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userId;
 
+	@Column(length = 255)
 	private String firstName;
+
+	@Column(length = 255)
 	private String lastName;
+
+	@Column(length = 255)
 	private String login;
+
+	@Column(length = 255)
 	private String password;
+
+	@Column(length = 20)
 	private String role;
 
     public User() {

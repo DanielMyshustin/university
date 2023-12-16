@@ -4,11 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Teacher")
-public class Teacher {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer userId;
+public class Teacher extends User {
 
 	@OneToOne
 	@JoinColumn(name = "course_id")

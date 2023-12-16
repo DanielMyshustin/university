@@ -10,6 +10,7 @@ public class Course {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer courseId;
 
+	@Column(length = 255)
 	private String courseName;
 
 	@OneToOne(mappedBy = "course")
