@@ -3,7 +3,7 @@ package ua.foxminded.javaspring.mishustin.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Student")
+@Table(name = "student")
 public class Student extends User {
 
 	@ManyToOne

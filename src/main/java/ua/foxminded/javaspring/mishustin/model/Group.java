@@ -5,14 +5,14 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Group")
+@Table(name = "group")
 public class Group {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer groupId;
 
-	@Column(length = 255)
+	@Column(length = 50)
 	private String groupName;
 
 	@OneToMany(mappedBy = "group")

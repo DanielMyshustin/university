@@ -3,7 +3,7 @@ package ua.foxminded.javaspring.mishustin.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class User {
 
 	@Id

@@ -1,57 +1,56 @@
-CREATE TABLE "Group"
+CREATE TABLE "group"
 (
-    groupId   SERIAL PRIMARY KEY,
-    groupName VARCHAR(255)
+    group_id   SERIAL PRIMARY KEY,
+    group_name VARCHAR(50) UNIQUE
 );
 
-CREATE TABLE "User"
+CREATE TABLE "user"
 (
-    userId    SERIAL PRIMARY KEY,
-    firstName VARCHAR(255),
-    lastName  VARCHAR(255),
-    login     VARCHAR(255),
+    user_id    SERIAL PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name  VARCHAR(255),
+    login     VARCHAR(255) UNIQUE,
     password  VARCHAR(255),
     role      VARCHAR(20)
 );
 
-CREATE TABLE Student
+CREATE TABLE student
 (
-    userId    INTEGER PRIMARY KEY REFERENCES "User" (userId),
-    "groupId" INTEGER REFERENCES "Group" (groupId),
-    CONSTRAINT fk_student_user FOREIGN KEY (userId) REFERENCES "User" (userId)
+    user_id    INTEGER PRIMARY KEY REFERENCES "user" (user_id),
+    group_id INTEGER REFERENCES "group" (group_id),
+    CONSTRAINT fk_student_user FOREIGN KEY (user_id) REFERENCES "user" (user_id)
 );
-
-CREATE TABLE Teacher
+CREATE TABLE teacher
 (
-    userId INTEGER PRIMARY KEY REFERENCES "User" (userId),
+    user_id INTEGER PRIMARY KEY REFERENCES "user" (user_id),
     course INTEGER,
     room   INTEGER
 );
 
-CREATE TABLE Course
+CREATE TABLE course
 (
-    courseId   SERIAL PRIMARY KEY,
-    courseName VARCHAR(255),
+    course_id   SERIAL PRIMARY KEY,
+    course_name VARCHAR(255) UNIQUE,
     teacher    INTEGER
 );
 
-ALTER TABLE Teacher
-    ADD FOREIGN KEY (userId) REFERENCES "User" (userId);
+ALTER TABLE teacher
+    ADD FOREIGN KEY (user_id) REFERENCES "user" (user_id);
 
-ALTER TABLE Course
-    ADD FOREIGN KEY (teacher) REFERENCES Teacher (userId);
+ALTER TABLE course
+    ADD FOREIGN KEY (teacher) REFERENCES teacher (user_id);
 
-CREATE TABLE TimeSchedule
+CREATE TABLE time_schedule
 (
-    timeScheduleId SERIAL PRIMARY KEY,
-    timePeriod     VARCHAR(255)
+    time_schedule_id SERIAL PRIMARY KEY,
+    time_period     VARCHAR(255) UNIQUE
 );
 
-CREATE TABLE Schedule
+CREATE TABLE schedule
 (
-    scheduleId     SERIAL PRIMARY KEY,
-    groupId        INTEGER REFERENCES "Group" (groupId),
-    scheduleDate   DATE,
-    courseId       INTEGER REFERENCES Course (courseId),
-    timeScheduleId INTEGER REFERENCES TimeSchedule (timeScheduleId)
+    schedule_id     SERIAL PRIMARY KEY,
+    group_id        INTEGER REFERENCES "group" (group_id),
+    schedule_date   DATE,
+    course_id       INTEGER REFERENCES course (course_id),
+    time_schedule_id INTEGER REFERENCES time_schedule (time_schedule_id)
 );
