@@ -13,17 +13,17 @@ public class Schedule {
 	private Integer scheduleId;
 
 	@ManyToOne
-	@JoinColumn(name = "group_id")
+	@JoinColumn(name = "group_id", nullable = false)
 	private Group group;
 
 	private LocalDate scheduleDate;
 
 	@OneToOne
-	@JoinColumn(name = "course_id")
+	@JoinColumn(name = "course_id", nullable = false)
 	private Course courseId;
 
 	@OneToOne
-	@JoinColumn(name = "time_schedule_id")
+	@JoinColumn(name = "time_schedule_id", nullable = false)
 	private TimeSchedule timeScheduleId;
 
     public Schedule() {

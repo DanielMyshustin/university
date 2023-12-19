@@ -10,10 +10,11 @@ public class Course {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer courseId;
 
-	@Column(length = 255)
+	@Column(length = 50, nullable = false)
 	private String courseName;
 
-	@OneToOne(mappedBy = "course")
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "teacher", nullable = false)
 	private Teacher teacher;
 
 	public Course() {

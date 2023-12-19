@@ -1,12 +1,13 @@
 services:
   postgres:
+    container_name: my-postgres-container
     image: 'postgres:15-alpine'
     environment:
       - 'POSTGRES_DB=University'
       - 'POSTGRES_PASSWORD=1234'
       - 'POSTGRES_USER=postgres'
     ports:
-      - '5432'
+      - '5432:5432'
 
   university-app:
     build: .

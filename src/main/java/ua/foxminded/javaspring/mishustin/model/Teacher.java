@@ -10,6 +10,7 @@ public class Teacher extends User {
 	@JoinColumn(name = "course_id")
 	private Course course;
 
+	@Column(length = 20, nullable = false)
 	private Integer room;
 
     public Teacher() {
