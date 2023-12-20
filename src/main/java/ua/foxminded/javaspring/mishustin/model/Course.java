@@ -8,9 +8,10 @@ public class Course {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "course_id")
 	private Integer courseId;
 
-	@Column(length = 50, nullable = false)
+	@Column(name = "course_name", length = 50, nullable = false, unique = true)
 	private String courseName;
 
 	@ManyToOne(optional = false)

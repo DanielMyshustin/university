@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: my-postgres-container
+    container_name: university-schedule-db
     image: 'postgres:15-alpine'
     environment:
       - 'POSTGRES_DB=University'

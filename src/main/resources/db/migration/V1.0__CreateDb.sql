@@ -17,7 +17,7 @@ CREATE TABLE "user"
 CREATE TABLE student
 (
     user_id INTEGER PRIMARY KEY REFERENCES "user" (user_id),
-    group_id INTEGER \dtREFERENCES "group" (group_id)
+    group_id INTEGER REFERENCES "group" (group_id)
 );
 
 CREATE TABLE teacher

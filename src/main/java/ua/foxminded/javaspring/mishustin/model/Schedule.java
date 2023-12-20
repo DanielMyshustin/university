@@ -10,12 +10,14 @@ public class Schedule {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "schedule_id")
 	private Integer scheduleId;
 
 	@ManyToOne
 	@JoinColumn(name = "group_id", nullable = false)
 	private Group group;
 
+	@Column(name = "schedule_date")
 	private LocalDate scheduleDate;
 
 	@OneToOne

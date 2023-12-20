@@ -3,14 +3,15 @@ package ua.foxminded.javaspring.mishustin.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "timeSchedule")
+@Table(name = "time_schedule")
 public class TimeSchedule {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "time_schedule_id")
 	private Integer timeScheduleId;
 
-	@Column(length = 20, nullable = false)
+	@Column(name = "time_period", length = 20, nullable = false, unique = true)
 	private String timePeriod;
 
     public TimeSchedule() {

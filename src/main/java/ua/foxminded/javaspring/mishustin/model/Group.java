@@ -10,9 +10,10 @@ public class Group {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "group_id")
 	private Integer groupId;
 
-	@Column(length = 50, nullable = false, unique = true)
+	@Column(name = "group_name", length = 50, nullable = false, unique = true)
 	private String groupName;
 
 	@OneToMany(mappedBy = "group")
