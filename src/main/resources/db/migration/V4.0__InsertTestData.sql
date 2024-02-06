@@ -1,9 +1,4 @@
-INSERT INTO course (coursename, teacher)
-VALUES ('Mathematics', 16),
-       ('History', 17),
-       ('Physics', 18);
-
-INSERT INTO "Group" (groupname)
-VALUES ('AA'),
-       ('BB'),
-       ('CC');
+INSERT INTO schedule (group_id, schedule_date, course_id, time_schedule_id) VALUES
+    (3, '2024-01-28', 3, 1);
+    
+    

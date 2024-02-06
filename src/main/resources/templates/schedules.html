@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Details</title>
+</head>
+
+<body>
+    <h2>Schedule</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Schedule ID</th>
+                <th>Group ID</th>
+                <th>Schedule Date</th> 
+                <th>Course ID</th> 
+                <th>Time Schedule ID</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="schedule : ${schedules}">
+                <td th:text="${schedule.scheduleId}"></td>
+                <td th:text="${schedule.group}"></td>
+                <td th:text="${schedule.scheduleDate}"></td>
+                <td th:text="${schedule.courseId}"></td>
+                <td th:text="${schedule.timeScheduleId}"></td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,13 +1,15 @@
 package ua.foxminded.javaspring.mishustin.controllers;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
 import ua.foxminded.javaspring.mishustin.model.Group;
 import ua.foxminded.javaspring.mishustin.service.GroupService;
-
-import java.util.Optional;
 
 @Controller
 public class GroupController {
@@ -21,14 +23,22 @@ public class GroupController {
 
 	@GetMapping("/groups")
 	public String showGroups(Model model) {
-		model.addAttribute("groups", groupService.getAllGroups());
-		return "groups";
+	    List<Group> groups = groupService.getAllGroups();
+	    model.addAttribute("groups", groups);
+	    return "groups";
 	}
 
 	@GetMapping("/groups/{groupId}")
 	public String showGroupDetails(@PathVariable Integer groupId, Model model) {
-		Optional<Group> group = groupService.getGroupById(groupId);
-		model.addAttribute("group", group);
-		return "group-details";
+	    Optional<Group> groupOptional = groupService.getGroupById(groupId);
+	    
+	    if (groupOptional.isPresent()) {
+	        Group group = groupOptional.get();
+	        model.addAttribute("group", group);
+	    } else {
+	    	System.out.println("Data not found.");
+	    }
+
+	    return "group-details";
 	}
 }

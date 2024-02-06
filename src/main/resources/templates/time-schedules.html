@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time</title>
+</head>
+
+<body>
+    <h2>All Time Schedules</h2>
+    <table border="1">
+        <tr>
+            <th>Time Schedule ID</th>
+            <th>Time Period</th>
+        </tr>
+        <tr th:each="time_schedule : ${time_schedules}"></tr>
+            <td th:text="${time_schedule.timeScheduleId}"></td>
+            <td th:text="${time_schedule.timePeriod}"></td>
+        </tr>
+    </table>
+</body>
+</html>

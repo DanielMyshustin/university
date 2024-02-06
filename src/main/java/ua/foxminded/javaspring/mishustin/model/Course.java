@@ -1,23 +1,30 @@
 package ua.foxminded.javaspring.mishustin.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "course")
 public class Course {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "course_id")
-	private Integer courseId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "course_id")
+    private Integer courseId;
 
-	@Column(name = "course_name", length = 50, nullable = false, unique = true)
-	private String courseName;
+    @Column(name = "course_name", length = 50, nullable = false, unique = true)
+    private String courseName;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "teacher", nullable = false)
-	private Teacher teacher;
-
+    @OneToOne
+    @JoinColumn(name = "teacher")
+    private Teacher teacher;
+    
 	public Course() {
 	}
 
@@ -36,12 +43,17 @@ public class Course {
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
-
+	
 	public Teacher getTeacher() {
 		return teacher;
 	}
 
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
+	}
+	
+	@Override
+	public String toString() {
+		return courseName;
 	}
 }

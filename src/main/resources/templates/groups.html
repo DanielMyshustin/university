@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Details</title>
+</head>
+
+<body>
+    <h2>Groups</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Group ID</th>
+                <th>Group Name</th>
+                <th>Student ID</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="group : ${groups}">
+                <td th:text="${group.groupId}"></td>
+                <td th:text="${group.groupName}"></td>
+                <td>
+                    <span th:text="${group.studentId}"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

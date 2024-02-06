@@ -1,12 +1,13 @@
 package ua.foxminded.javaspring.mishustin.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import ua.foxminded.javaspring.mishustin.dao.TimeScheduleRepository;
-import ua.foxminded.javaspring.mishustin.model.TimeSchedule;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import ua.foxminded.javaspring.mishustin.dao.TimeScheduleRepository;
+import ua.foxminded.javaspring.mishustin.model.TimeSchedule;
 
 @Service
 public class TimeScheduleService {
