@@ -6,12 +6,14 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import ua.foxminded.javaspring.mishustin.model.Teacher;
 import ua.foxminded.javaspring.mishustin.service.TeacherService;
 
 import java.util.Optional;
 
+@Component
 public class SecurityRealm extends AuthorizingRealm {
 
     @Autowired

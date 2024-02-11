@@ -20,7 +20,7 @@ public class TeacherController {
 		this.teacherService = teacherService;
 	}
 
-	@GetMapping("/teachers")
+	@GetMapping("/teacher-page")
 	public String showTeachers(Model model) {
 		model.addAttribute("teachers", teacherService.getAllTeachers());
 		return "teachers";
