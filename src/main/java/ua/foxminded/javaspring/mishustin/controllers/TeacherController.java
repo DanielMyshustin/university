@@ -21,6 +21,12 @@ public class TeacherController {
 	}
 
 	@GetMapping("/teacher-page")
+	public String showTeachersMenu(Model model) {
+		model.addAttribute("teacher-page", teacherService.getAllTeachers());
+		return "teacher-page";
+	}
+	
+	@GetMapping("/teachers")
 	public String showTeachers(Model model) {
 		model.addAttribute("teachers", teacherService.getAllTeachers());
 		return "teachers";

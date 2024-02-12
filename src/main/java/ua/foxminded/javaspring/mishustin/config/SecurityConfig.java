@@ -1,10 +1,11 @@
 package ua.foxminded.javaspring.mishustin.config;
-
+ 
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.realm.text.IniRealm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,22 +16,21 @@ import java.util.Map;
 
 @Configuration
 public class SecurityConfig {
+	
+    private final SecurityRealm securityRealm;
+	
+    @Autowired
+	public SecurityConfig(SecurityRealm securityRealm) {
+		this.securityRealm = securityRealm;
+	}
 
 	@Bean(name = "customSecurityManager")
 	public SecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setRealm(shiroRealm());
+        securityManager.setRealm(securityRealm);
         // Другие настройки...
 
         return securityManager;
-    }
-
-    @Bean
-    public Realm shiroRealm() {
-        IniRealm realm = new IniRealm("classpath:shiro.ini");
-        // Другие настройки...
-
-        return realm;
     }
 
     @Bean

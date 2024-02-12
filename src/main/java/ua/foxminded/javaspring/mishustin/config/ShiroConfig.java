@@ -6,21 +6,30 @@ import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSource
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.realm.text.IniRealm; // Импортируйте IniRealm
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import ua.foxminded.javaspring.mishustin.config.SecurityConfig;
+import ua.foxminded.javaspring.mishustin.security.SecurityRealm;
 
 @Configuration
 @Import(SecurityConfig.class)
 @SuppressFBWarnings(value = "URF_UNREAD_FIELD", justification = "Field is injected by Spring")
 public class ShiroConfig {
+	
+	private final SecurityRealm securityRealm;
+	
+	@Autowired
+	public ShiroConfig(SecurityRealm securityRealm) {
+		this.securityRealm = securityRealm;
+	}
 
 	@Bean(name = "customSecurityManager")
-	public DefaultWebSecurityManager securityManager(Realm realm) {
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager(realm);
+	public DefaultWebSecurityManager securityManager(SecurityRealm securityRealm) {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager(securityRealm);
         return securityManager;
     }
 
@@ -35,9 +44,9 @@ public class ShiroConfig {
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
     }
-  
-    @Bean
-    public Realm realm() {
-        return new IniRealm("classpath:shiro.ini");
+    
+    @SuppressWarnings("unused")
+    public ShiroConfig() {
+      this.securityRealm = null;
     }
 }

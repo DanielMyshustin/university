@@ -32,6 +32,9 @@ public class SecurityRealm extends AuthorizingRealm {
 
         Teacher teacher = optionalTeacher.get();
         String password = teacher.getPassword();
+        
+        System.out.print(teacher);
+        System.out.print(password);
 
         return new SimpleAuthenticationInfo(username, password, getName());
     }
@@ -50,6 +53,7 @@ public class SecurityRealm extends AuthorizingRealm {
                 authorizationInfo.addRole(role);
                 return authorizationInfo;
             }
+            System.out.print(role);
         }
         return null;
     }

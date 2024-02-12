@@ -42,6 +42,6 @@ public class AutorizationController {
     
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage() {
-        return "login"; // Имя вашей страницы login
+        return "login";
     }
 }
